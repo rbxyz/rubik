@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Aqui está a versão corrigida e melhorada do seu `README.md`:
 
-## Getting Started
+````markdown
+# Sistema de Gestão de Editais
 
-First, run the development server:
+Este projeto visa criar uma plataforma para o gerenciamento de editais em formato PDF. O sistema permite que usuários logados publiquem novos editais, enquanto todos os visitantes podem visualizar os editais e realizar inscrições nos editais disponíveis.
+
+## Funcionalidades
+
+- **Postagem de Editais**: Apenas usuários logados podem postar novos editais, incluindo PDF, título e descrição.
+- **Visualização Pública**: Todos os usuários podem visualizar os editais, com a opção de fazer o download do PDF ou visualizar diretamente na página.
+- **Formulário de Inscrição**: Os visitantes podem se inscrever nos editais através de um formulário configurável pelo administrador.
+- **Administração**: O administrador pode editar, excluir ou gerenciar os editais e configurar os formulários de inscrição.
+
+## Tecnologias
+
+- **Frontend**: HTML5, CSS3, JavaScript (React ou Vue.js)
+- **Backend**: Node.js, PHP ou Python (Django/Flask)
+- **Banco de Dados**: MySQL, PostgreSQL ou MongoDB
+- **Visualização de PDF**: PDF.js ou biblioteca similar
+
+## Como Rodar o Projeto
+
+### 1. Clone o Repositório
+
+```bash
+git clone https://github.com/usuario/projeto-edital.git
+```
+````
+
+### 2. Instale as Dependências
+
+Navegue até o diretório do projeto:
+
+```bash
+cd projeto-edital
+```
+
+Instale as dependências necessárias para o frontend e backend:
+
+```bash
+npm install
+```
+
+### 3. Inicie o Servidor
+
+Inicie o servidor de desenvolvimento:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+O projeto estará disponível em:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Estrutura do Projeto
 
-## Learn More
+- `/frontend`: Contém os arquivos do frontend (páginas, componentes, etc).
+- `/backend`: Contém o código do servidor e lógica de negócios.
+- `/database`: Scripts de configuração do banco de dados.
 
-To learn more about Next.js, take a look at the following resources:
+## Contribuição
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Sinta-se à vontade para contribuir com este projeto! Abra uma issue ou envie um pull request para sugerir melhorias ou relatar problemas.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Licença
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Este projeto está licenciado sob a [MIT License](LICENSE).
