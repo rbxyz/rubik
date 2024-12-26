@@ -1,15 +1,18 @@
 import Link from "next/link";
+import { getEditalById } from "@/services/editalService";
+import InscricaoForm from "@/components/InscricaoForm";
 
-// Simulação de dados de um edital específico
-const edital = {
-  id: 1,
-  titulo: "Edital 001/2023",
-  descricao: "Processo seletivo para estágio em Tecnologia da Informação",
-  pdfUrl: "/caminho-para-o-pdf/edital001-2023.pdf",
-};
+export default async function DetalheEdital({
+  params,
+}: {
+  params: { id: string };
+}) {
+  const edital = await getEditalById(parseInt(params.id));
 
-export default function DetalheEdital({ params }: { params: { id: string } }) {
-  // Na implementação real, você buscaria os dados do edital com base no ID
+  if (!edital) {
+    return <div>Edital não encontrado</div>;
+  }
+
   return (
     <div className="bg-white rounded-lg shadow-md p-6">
       <h1 className="text-3xl font-bold mb-4">{edital.titulo}</h1>
@@ -22,7 +25,7 @@ export default function DetalheEdital({ params }: { params: { id: string } }) {
         </div>
       </div>
 
-      <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+      <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-8">
         <a
           href={edital.pdfUrl}
           download
@@ -30,12 +33,11 @@ export default function DetalheEdital({ params }: { params: { id: string } }) {
         >
           Download PDF
         </a>
-        <Link
-          href={`/editais/${params.id}/inscricao`}
-          className="bg-primary text-white px-6 py-2 rounded hover:bg-blue-700 transition duration-300 text-center"
-        >
-          Inscrever-se
-        </Link>
+      </div>
+
+      <div className="mt-8">
+        <h2 className="text-2xl font-semibold mb-4">Inscreva-se</h2>
+        <InscricaoForm editalId={edital.id} />
       </div>
     </div>
   );

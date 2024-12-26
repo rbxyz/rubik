@@ -1,6 +1,5 @@
 import Link from "next/link";
 
-// Simulação de dados de editais
 const editais = [
   { id: 1, titulo: "Edital 001/2023", status: "Publicado" },
   { id: 2, titulo: "Edital 002/2023", status: "Rascunho" },
