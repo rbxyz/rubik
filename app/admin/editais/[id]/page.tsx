@@ -1,6 +1,5 @@
 import { getEditalById } from "@/services/editalService";
 import { Button } from "@/components/ui/button";
-import { Metadata } from "next";
 
 interface EditalProps {
   params: {
@@ -8,9 +7,13 @@ interface EditalProps {
   };
 }
 
-export default async function DetalheEdital({ params }: EditalProps) {
-  // Recupera os dados do edital de forma assíncrona
-  const edital = await getEditalById(parseInt(params.id, 10));
+export default async function DetalheEdital({
+  params,
+}: {
+  params: { id: string };
+}) {
+  const id = parseInt(params.id, 10);
+  const edital = await getEditalById(id);
 
   if (!edital) {
     return <div>Edital não encontrado</div>;
@@ -49,11 +52,4 @@ export default async function DetalheEdital({ params }: EditalProps) {
       </div>
     </div>
   );
-}
-
-// Adicionando metadados se necessário (opcional)
-export function generateMetadata({ params }: EditalProps): Metadata {
-  return {
-    title: `Detalhes do Edital ${params.id}`,
-  };
 }
