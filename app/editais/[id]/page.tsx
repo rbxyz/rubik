@@ -1,6 +1,5 @@
-import Link from "next/link";
 import { getEditalById } from "@/services/editalService";
-import InscricaoForm from "@/components/InscricaoForm";
+import { Button } from "@/components/ui/button";
 
 export default async function DetalheEdital({
   params,
@@ -25,19 +24,24 @@ export default async function DetalheEdital({
         </div>
       </div>
 
-      <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-8">
-        <a
-          href={edital.pdfUrl}
-          download
-          className="bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600 transition duration-300 text-center"
-        >
-          Download PDF
-        </a>
-      </div>
-
-      <div className="mt-8">
-        <h2 className="text-2xl font-semibold mb-4">Inscreva-se</h2>
-        <InscricaoForm editalId={edital.id} />
+      <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+        <Button asChild>
+          <a
+            href={edital.pdfUrl}
+            download
+            className="bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600 transition duration-300 text-center"
+          >
+            Download PDF
+          </a>
+        </Button>
+        <Button asChild>
+          <a
+            href={`/editais/${params.id}/inscricao`}
+            className="bg-primary text-white px-6 py-2 rounded hover:bg-blue-700 transition duration-300 text-center"
+          >
+            Inscrever-se
+          </a>
+        </Button>
       </div>
     </div>
   );

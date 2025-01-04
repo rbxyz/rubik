@@ -1,11 +1,11 @@
-import NextAuth from "next-auth";
+import NextAuth, { NextAuthOptions } from "next-auth"; // Importando diretamente NextAuth
 import CredentialsProvider from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import prisma from "@/lib/prisma";
 import bcrypt from "bcrypt";
 import { Session, User, JWT } from "next-auth";
 
-export default NextAuth({
+export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
       name: "Credentials",
@@ -36,13 +36,12 @@ export default NextAuth({
             return null;
           }
 
-          // Garantindo que os dados retornados correspondem ao tipo User
           const userData: User = {
-            id: user.id.toString(), // Garantir que o id seja string se necessário
+            id: user.id.toString(),
             email: user.email,
             name: user.username,
-            image: user.image,
-            password: user.password, // Pode ser opcional
+            password: user.password,
+            image: "",
           };
 
           return userData;
@@ -57,13 +56,13 @@ export default NextAuth({
   callbacks: {
     async jwt({ token, user }: { token: JWT; user: User | null }) {
       if (user) {
-        token.id = user.id; // Garantir que o id é atribuído corretamente
+        token.id = user.id;
       }
       return token;
     },
     async session({ session, token }: { session: Session; token: JWT }) {
       if (session.user) {
-        session.user.id = token.id; // Garantir que o id é adicionado corretamente ao session.user
+        session.user.id = token.id;
       }
       return session;
     },
@@ -71,4 +70,7 @@ export default NextAuth({
   session: {
     strategy: "jwt",
   },
-});
+};
+
+// Exportando NextAuth com as opções definidas
+export default NextAuth(authOptions);

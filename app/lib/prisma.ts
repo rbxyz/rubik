@@ -1,8 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 
 declare global {
-  // Isso impede erros durante hot reload no desenvolvimento
-  var prisma: PrismaClient | undefined;
+  let prisma: PrismaClient | undefined;
 }
 
 // Inicializa o cliente Prisma corretamente
