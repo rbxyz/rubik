@@ -1,12 +1,6 @@
 import { getEditalById } from "@/services/editalService";
 import { Button } from "@/components/ui/button";
 
-interface EditalProps {
-  params: {
-    id: string;
-  };
-}
-
 export default async function DetalheEdital({
   params,
 }: {
